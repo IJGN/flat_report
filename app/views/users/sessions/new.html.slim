@@ -1,0 +1,24 @@
+.row.login-form
+  .col.s12.card-panel.hoverable
+    h4.card-title.center Sign In
+    = simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+      - if devise_error_messages? || alert
+        .row
+          .form-errors.red.lighten-1
+            = devise_error_messages!
+            = alert
+      .row.margin
+        .input-field.col.s12
+          = f.input :email, required: true, autofocus: true
+      .row.margin
+        .input-field.col.s12
+          = f.input :password, required: true, autocomplete: "off", icon: "lock", hint: false
+      .row
+        .col.s12
+          = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+      .row
+        .input-field.col.s12.center
+          = f.button :submit, "LOGIN"
+      .row
+        .input-field.col.s12.center
+          = render "devise/shared/links"

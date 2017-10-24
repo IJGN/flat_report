@@ -1,0 +1,18 @@
+.row.login-form
+  .col.s12.card-panel.hoverable
+    h4.card-title.center Forgot your Password?
+    = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :post } do |f|
+      - if devise_error_messages? || alert
+        .row
+          .form-errors.red.lighten-1
+            = devise_error_messages!
+            = alert
+      .row.margin
+        .input-field.col.s12
+          = f.input :email, autofocus: true, required: true
+      .row
+        .input-field.col.s12.center
+          = f.button :submit, "Reset Instructions"
+      .row
+        .input-field.col.s12.center
+          = render "devise/shared/links"

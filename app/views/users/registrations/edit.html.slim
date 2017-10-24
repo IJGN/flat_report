@@ -1,0 +1,32 @@
+.row.login-form
+  .col.s12.card-panel.hoverable
+    h4.card-title.center Edit #{resource_name.to_s.humanize}
+    = simple_form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :put } do |f|
+      - if devise_error_messages? || alert
+        .row
+          .form-errors.red.lighten-1
+            = devise_error_messages!
+            = alert
+      .row.margin
+        .input-field.col.s6
+          = f.input :first_name, label_html: { class: "active" }
+        .input-field.col.s6
+          = f.input :last_name, label_html: { class: "active" }
+      .row.margin
+        .input-field.col.s12
+          = f.input :username, label_html: { class: "active" }
+      .row.margin
+        .input-field.col.s12
+          = f.input :email, label_html: { class: "active" }
+      .row.margin
+        .input-field.col.s12
+          = f.input :password, label: "Password (Leave Blank if you don't want to change it)", autocomplete: "off", hint: "#{@minimum_password_length} Characters Minimum", icon: "lock"
+      .row.margin
+        .input-field.col.s12
+          = f.input :password_confirmation,  autocomplete: "off", icon: "lock"
+      .row.margin
+        .input-field.col.s12
+          = f.input :current_password, autocomplete: "off", hint: "we need your current password to confirm your changes", icon: "lock"
+      .row
+        .input-field.col.s12.center
+          = f.button :submit, "Update"
