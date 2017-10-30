@@ -60,9 +60,11 @@ html
           .container
             == yield
       - else
-        == yield
+        .container
+          == yield
 
-    = render 'footer'
+    - if !user_signed_in?
+      = render 'footer'
 
 - flash.each do |type, message|
   - if type == 'alert'

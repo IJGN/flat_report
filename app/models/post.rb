@@ -27,6 +27,8 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
+  enum status: %i[draft closed published]
+
   validates :published_at, presence: true
   validates :status, presence: true
   validates :stars_count, presence: true

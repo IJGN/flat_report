@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     namespace :posts do
       resources :stars, only: :index
     end
-    resources :posts, only: [:index, :show, :update, :destroy]
+    resources :posts, only: [:index, :edit, :update, :destroy]
   end
 
   # Unauthenticated routings

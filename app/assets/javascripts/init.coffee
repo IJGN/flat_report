@@ -14,3 +14,7 @@ $(document).on 'ready turbolinks:load', ->
     $(this).parents('div.input-field').children('label').attr(
       'data-hint', $value
     )
+
+  $('.datepicker').pickadate
+    selectMonths: true
+    selectYears: 15
