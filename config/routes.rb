@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :posts, only: :index, controller: 'users/posts'
   end
 
-  resources :posts, only: [:show, :create] do
+  resources :posts, only: [:show, :new, :create] do
     resources :stars, only: :create, controller: 'posts/stars' do
       delete :destroy, on: :collection
     end
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   namespace :me do
     namespace :posts do
-      resources :starred, only: :index
+      resources :stars, only: :index
     end
     resources :posts, only: [:index, :show, :update, :destroy]
   end

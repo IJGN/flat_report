@@ -49,39 +49,8 @@ html
         javascript:
           $('.tap-target.sidenav').tapTarget('open');
 
-
-    aside
-      ul#slide-out.side-nav
-        - if user_signed_in?
-          li
-            .userView
-              .background
-                img src="http://materializecss.com/images/office.jpg" /
-              a href="#!user"
-                img.circle src="http://materializecss.com/images/yuna.jpg" /
-              a href="#!name"
-                span.white-text.name
-                  = current_user.username
-              a href="#!email"
-                span.white-text.email
-                  = current_user.email
-          li
-            a href="/posts"
-              i.material-icons cloud
-              span Posts
-        li
-          a href="/components"
-            i.material-icons settings
-            span Component
-        li
-          .divider
-        li
-          a.subheader Others
-        li
-          - if user_signed_in?
-            = link_to (t :sign_out), destroy_user_session_url, class: "waves-effect", data: { method: :delete }
-          - else
-            = link_to (t :sign_in), new_user_session_url, class: "waves-effect"
+    / sidebar
+    = render 'sidebar'
 
     main
       = yield(:jumbotron) if content_for?(:jumbotron)
