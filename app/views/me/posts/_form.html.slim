@@ -1,4 +1,4 @@
-= form_for @post do |f|
+= simple_form_for [:me, @post] do |f|
   - if @post.errors.any?
     #error_explanation
       pre
@@ -9,42 +9,18 @@
   .row
     .col.s12
       .row
-        .input-field.col.s10
-          i.material-icons.prefix title
-          = f.text_field :title, placeholder: "Please use appropriate punctuation"
-          = f.label :title
+        .input-field.col.s6.m3
+          = f.input :published_at, as: :string, input_html: { class: "datepicker" }
       .row
-        .input-field.col.s10
-          i.material-icons.prefix descriptions
-          = f.text_area :body, placeholder: "some text here", class: "materialize-textarea", data: {length: "360"}
-          = f.label :body
+        .input-field.col.s12.m12
+          = f.input :unknown_content, class: "materialize-textarea", data: {length: "360"}, label_html: { class: "active" }
       .row
-        .input-field.col.s10
-          i.material-icons.prefix face
-          = f.radio_button :gender, "m"
-          = f.label :gender_m, "Male"
-          = f.radio_button :gender, "f"
-          = f.label :gender_f, "Female"
+        .input-field.col.s12.12
+          = f.input :impression_content, class: "materialize-textarea", data: {length: "360"}, label_html: { class: "active" }
       .row
-        .input-field.col.s10
-          i.material-icons.prefix published
-          = f.check_box :published, class:"checkbox"
-          = f.label :published
-      .row
-        .input-field.col.s10
-          i.material-icons.prefix cake
-          = f.text_field :birthday, class: "datepicker"
-          = f.label :birthday
+        .input-field.col.s6.m3
+          = f.input :status, as: :select, collection: Post.statuses.keys.to_a, label: false
 
       .row
         .input-field.col.s3
-          = f.button class: "waves-effect waves-light btn ", type: :submit do |btn|
-            | Create
-            i.material-icons.right send
-
-javascript:
-  $('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15 // Creates a dropdown of 15 years to control year
-  });
-        
+          = f.button :submit

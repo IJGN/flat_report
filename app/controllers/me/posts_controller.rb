@@ -1,5 +1,5 @@
 class Me::PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:edit, :update, :destroy]
 
   helper_method :current_post_hit
 
@@ -7,27 +7,7 @@ class Me::PostsController < ApplicationController
     @posts = current_user.posts
   end
 
-  def show; end
-
-  def new
-    @post = Post.posts.new
-  end
-
   def edit
-  end
-
-  def create
-    @post = current_user.posts.new(post_params)
-
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   def update
@@ -50,6 +30,7 @@ class Me::PostsController < ApplicationController
     end
   end
 
+  # TODO: Move another
   def current_post_hit
     hit = cookies['post_hit'].to_i
     hit += 1

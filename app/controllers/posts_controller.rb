@@ -1,8 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: :show
 
-  helper_method :current_post_hit
-
   def show; end
 
   def new
@@ -21,13 +19,6 @@ class PostsController < ApplicationController
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def current_post_hit
-    hit = cookies['post_hit'].to_i
-    hit += 1
-    cookies['post_hit'] = hit
-    hit
   end
 
   private
