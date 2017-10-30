@@ -1,0 +1,19 @@
+= simple_form_for @team, url: team_path do |f|
+  - if @team.errors.any?
+    #error_explanation
+      pre
+        = "#{pluralize(@team.errors.count, "error")} prohibited this team from being saved:"
+        ul
+          - @team.errors.full_messages.each do |message|
+            li = message
+  .row
+    .col.s12
+      .row
+        .input-field.col.s12.m12
+          = f.input :name, class: "materialize-text",label_html: { class: "active" }
+      .row
+        .input-field.col.s12.12
+          = f.input :access_token, class: "materialize-text", label_html: { class: "active" }
+      .row
+        .input-field.col.s3
+          = f.button :submit

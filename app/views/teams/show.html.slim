@@ -1,0 +1,26 @@
+p
+  strong Team:
+  = @team.name
+
+p
+  strong Token:
+  = @team.access_token
+
+p
+  strong User size:
+  = @team.users.size
+
+
+p
+  strong Post size:
+  = @team.posts.size
+
+p
+  strong All Posts:
+- @team.posts.each do |post|
+  p= post.user.email
+  p= post.published_at
+  p= post.status
+
+
+= link_to 'Edit', edit_team_path

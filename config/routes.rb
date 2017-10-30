@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     root :to => "dashboard#dashboard", :as => "user_authenticated_root"
   end
   resource :me, only: :update
-  resource :team, only: [:show, :update]
+  resource :team, only: [:show, :edit, :update]
 
   resources :users, only: [:index, :show, :create] do
     resources :posts, only: :index, controller: 'users/posts'

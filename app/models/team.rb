@@ -19,4 +19,8 @@ class Team < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :access_token, uniqueness: true
+
+  def posts
+    Post.includes(:user).where(user_id: users.ids)
+  end
 end
