@@ -1,3 +1,6 @@
+/ We need to build a team first so we can use it in our form builder
+- resource.build_team
+
 .row.login-form
   .col.s12.card-panel.hoverable
     h4.card-title.center Sign Up
@@ -9,7 +12,7 @@
             = alert
       .row.margin
         .input-field.col.s12
-          = f.simple_fields_for Team.new do |builder|
+          = f.simple_fields_for :team do |builder|
             = builder.input :name, required: true, autofocus: true, icon: "business"
       .row.margin
         .input-field.col.s12
