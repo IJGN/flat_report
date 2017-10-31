@@ -1,6 +1,31 @@
 h4 Editing post
 
-== render 'form'
+= simple_form_for [:me, @post] do |f|
+  - if @post.errors.any?
+    #error_explanation
+      pre
+        = "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+        ul
+          - @post.errors.full_messages.each do |message|
+            li = message
+  .row
+    .col.s12
+      .row
+        .input-field.col.s8.m4
+          = f.input :published_at, as: :string, input_html: { class: "datepicker" }, label_html: { class: "active" }, icon: 'today'
+      .row
+        .input-field.col.s12.m12
+          = f.input :unknown_content, class: "materialize-textarea", label_html: { class: "active" }, icon: 'message'
+      .row
+        .input-field.col.s12.12
+          = f.input :impression_content, class: "materialize-textarea", label_html: { class: "active" }, icon: 'message'
+      .row
+        .input-field.col.s6.m3
+          = f.input :status, as: :select, collection: Post.statuses.keys.to_a, include_blank: false, label: false, icon: 'settings'
+
+      .row
+        .input-field.col.s3
+          = f.button :submit
 
 = link_to 'Show', @post
 '|
