@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   authenticated :user do
     root :to => "dashboard#dashboard", :as => "user_authenticated_root"
   end
-  resource :me, only: :update
+  resource :me, only: [:show, :edit, :update]
   resource :team, only: [:show, :edit, :update]
 
   resources :users, only: [:index, :show, :create] do

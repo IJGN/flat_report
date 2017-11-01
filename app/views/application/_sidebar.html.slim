@@ -19,20 +19,20 @@ aside
           span Dashboard
       li
         = link_to team_path do
-          i.material-icons cloud
+          i.material-icons group
           span Team
       li
         = link_to me_posts_path do
-          i.material-icons face
+          i.material-icons create
           span Posts
       li
         = link_to me_posts_stars_path do
           i.material-icons star
           span Stars
     li
-      a href="/components"
+      = link_to me_path do
         i.material-icons settings
-        span Component
+        span Settings
     li
       .divider
     li
