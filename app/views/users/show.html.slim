@@ -1,0 +1,14 @@
+section
+  h4= @user.username || 'User'
+
+  - @user.attributes.each do |key, val|
+    p
+      strong= "#{key}:"
+      = val
+
+  .divider
+  p
+    strong Posts:
+    = @user.posts.size
+
+  = link_to 'Back', members_path

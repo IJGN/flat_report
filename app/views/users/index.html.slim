@@ -1,0 +1,15 @@
+section
+  h4 Users
+  ul.collection
+    - @users.each do |user|
+      li.collection-item.avatar
+        img.circle alt="" src="http://special.froma.com/jkwp/wp-content/uploads/2015/11/81ccfa9a27bb7259ae01fd4de24f0210.jpg" /
+        span.title= user.username
+        p
+          | Last login:
+          = user.last_sign_in_at
+        p
+          = user.posts.size
+          | posts
+        = link_to member_path(user), class: "secondary-content" do
+          i.material-icons info

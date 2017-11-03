@@ -1,8 +1,8 @@
 $(document).on 'ready turbolinks:load', ->
-  $(".button-collapse").sideNav();
+  $(".button-collapse").sideNav()
   $('.dropdown-button').dropdown()
-  $('.modal').modal();
-  $('select').material_select();
+  $('.modal').modal()
+  $('select').material_select()
   Waves.displayEffect()
   console.log "load init on ready or turbolinks:load"
 

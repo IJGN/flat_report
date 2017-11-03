@@ -1,0 +1,16 @@
+.fixed-action-btn.horizontal
+  a.btn-floating.btn-large.red
+    i.material-icons add
+  ul
+    li
+      = link_to new_post_path, class: "btn-floating red" do
+        i.material-icons note_add
+    li
+      = link_to new_member_path, class: "btn-floating yellow.darken-1" do
+        i.material-icons person_add
+    li
+      a.btn-floating.green
+        i.material-icons add_alert
+    li
+      a.btn-floating.blue
+        i.material-icons attach_file

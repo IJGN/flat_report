@@ -1,0 +1,27 @@
+section
+  h4 New User
+  = simple_form_for @user, url: members_path do |f|
+    - if @user.errors.any?
+      #error_explanation
+        pre
+          = "#{pluralize(@user.errors.count, "error")} prohibited this team from being saved:"
+          ul
+            - @user.errors.full_messages.each do |message|
+              li = message
+    .row
+      .col.s12
+        .row
+          .input-field.col.s12.m12
+            = f.input :username, label_html: { class: "active" }, icon: "perm_identity"
+        .row
+          .input-field.col.s12.m12
+            = f.input :email, required: true
+        .row
+          .input-field.col.s12.m12
+            = f.input :password, autocomplete: "off", required: true, icon: "lock", label_html: { data: { hint: "#{@minimum_password_length} Characters Minimum" } }
+        .row
+          .input-field.col.s12
+            = f.input :password_confirmation, autocomplete: "off", required: true, icon: "lock"
+        .row
+          .input-field.col.s12.center
+            = f.button :submit

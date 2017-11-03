@@ -6,11 +6,12 @@ Rails.application.routes.draw do
   authenticated :user do
     root :to => "dashboard#dashboard", :as => "user_authenticated_root"
   end
+
   resource :me, only: [:show, :edit, :update]
   resource :team, only: [:show, :edit, :update]
 
-  resources :users, only: [:index, :show, :create] do
-    resources :posts, only: :index, controller: 'users/posts'
+  resources :members, only: [:index, :show, :new, :create], controller: :users do
+    resources :posts, only: :index, module: :users
   end
 
   resources :posts, only: [:show, :new, :create] do
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
   end
 
   # Unauthenticated routings
-  get  "/*id",                 to: 'pages#show',      as: :page, format: false, constraints: HighVoltage::Constraints::RootRoute
+  get  "/*id",to: 'pages#show', as: :page, format: false, constraints: HighVoltage::Constraints::RootRoute
 
   # Root path
   root 'pages#home'

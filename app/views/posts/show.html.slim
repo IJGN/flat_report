@@ -1,11 +1,7 @@
-p#notice = notice
-
-p
-  strong Published_at:
-  = @post.published_at
-p
-  strong Status:
-  = @post.status
+- @post.attributes.each do |key, val|
+  p
+    strong= "#{key}:"
+    = val
 
 - if current_user.id == @post.user_id
   = link_to 'Edit', edit_me_post_path(@post)

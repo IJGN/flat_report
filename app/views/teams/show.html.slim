@@ -1,26 +1,20 @@
-p
-  strong Team:
-  = @team.name
+- @team.attributes.each do |key, val|
+  p
+    strong= "#{key}:"
+    = val
+
+.divider
 
 p
-  strong Token:
-  = @team.access_token
-
-p
-  strong User size:
+  strong Member size:
   = @team.users.size
 
+= link_to 'Members', members_path
+
+.divider
 
 p
   strong Post size:
   = @team.posts.size
-
-p
-  strong All Posts:
-- @team.posts.each do |post|
-  p= post.user.email
-  p= post.published_at
-  p= post.status
-
 
 = link_to 'Edit', edit_team_path

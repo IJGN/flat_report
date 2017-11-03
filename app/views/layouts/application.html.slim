@@ -63,6 +63,9 @@ html
         .container
           == yield
 
+      - if user_signed_in?
+        = render 'partials/components/buttons'
+
     - if !user_signed_in?
       = render 'footer'
 
