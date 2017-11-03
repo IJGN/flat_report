@@ -13,6 +13,19 @@ h4 Editing post
       .row
         .input-field.col.s8.m4
           = f.input :published_at, as: :string, input_html: { class: "datepicker" }, label_html: { class: "active" }, icon: 'today'
+
+      .divider
+      h4 Details
+      .js-cocoon
+        = f.simple_fields_for :post_details do |post_detail|
+          = render 'posts/post_detail_fields', f: post_detail
+        .row.links.right-align
+          = link_to_add_association f, :post_details, partial: 'posts/post_detail_fields', class: 'btn waves-effect waves-light purple' do
+            i.material-icons.left note_add
+            | Add
+      .divider
+      br
+
       .row
         .input-field.col.s12.m12
           = f.input :unknown_content, class: "materialize-textarea", label_html: { class: "active" }, icon: 'message'

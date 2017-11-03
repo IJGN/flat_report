@@ -28,6 +28,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:published_at, :unknown_content, :impression_content, :status)
+    params.require(:post).permit(:published_at, :unknown_content, :impression_content, :status, post_details_attributes: [:id, :project_id, :spent_time, :content, :_destroy])
   end
 end

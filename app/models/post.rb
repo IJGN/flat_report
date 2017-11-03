@@ -7,7 +7,7 @@
 #  published_at       :datetime         not null
 #  unknown_content    :text
 #  impression_content :text
-#  status             :integer          default(0), not null
+#  status             :integer          default("draft"), not null
 #  stars_count        :integer          default(0), not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
@@ -22,8 +22,9 @@
 #
 
 class Post < ApplicationRecord
-  has_many :post_details, dependent: :destroy
+  has_many :post_details, inverse_of: :post, dependent: :destroy
   has_many :stars, dependent: :destroy
+  accepts_nested_attributes_for :post_details, allow_destroy: true, reject_if: :all_blank
 
   belongs_to :user
 

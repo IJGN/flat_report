@@ -71,5 +71,7 @@ gem 'materialize-sass', github: "mkhairi/materialize-sass"
 gem 'show_for'
 gem 'jquery-datatables'
 gem 'annotate'
+# Nested form
+gem 'cocoon'
 
 ruby '2.4.2'
