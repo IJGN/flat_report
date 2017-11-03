@@ -1,5 +1,28 @@
 h4 Editing me
 
-== render 'form'
+= simple_form_for @me, url: me_path do |f|
+  - if @me.errors.any?
+    #error_explanation
+      pre
+        = "#{pluralize(@me.errors.count, "error")} prohibited this team from being saved:"
+        ul
+          - @me.errors.full_messages.each do |message|
+            li = message
+  .row
+    .col.s12
+      .row
+        .input-field.col.s12.m12
+          = f.input :username, label_html: { class: "active" }, icon: "perm_identity"
+      .row
+        .input-field.col.s6
+          = f.input :first_name, label_html: { class: "active" }, icon: "person"
+        .input-field.col.s6
+          = f.input :last_name, label_html: { class: "active" }, icon: "person"
+      .row
+        .input-field.col.s12.m12
+          = f.input :email, label_html: { class: "active" }
+      .row
+        .input-field.col.s3
+          = f.button :submit
 
 = link_to 'Back', me_path

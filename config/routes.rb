@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # Devise routings
   devise_for :users
 
-  # Authenticated routings
+  # Authenticated root path
   authenticated :user do
     root :to => "dashboard#dashboard", :as => "user_authenticated_root"
   end

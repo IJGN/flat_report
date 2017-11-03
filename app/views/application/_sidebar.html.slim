@@ -6,7 +6,7 @@ aside
           .background
             img src="http://materializecss.com/images/office.jpg" /
           a href="#!user"
-            img.circle src="http://materializecss.com/images/yuna.jpg" /
+            = image_tag 'default_avatar.png', class: "circle cyan"
           a href="#!name"
             span.white-text.name
               = current_user.username
