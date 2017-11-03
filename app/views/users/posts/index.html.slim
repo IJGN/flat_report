@@ -24,6 +24,3 @@ div class="row"
               td = post.status
               td.right-align
                 = link_to 'Show ', post
-                - if current_user.id == post.user_id
-                  = link_to ' Edit ', edit_me_post_path(post)
-                  = link_to ' Destroy', me_post_path(post), data: {:confirm => 'Are you sure?'}, :method => :delete

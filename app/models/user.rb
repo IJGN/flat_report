@@ -51,4 +51,8 @@ class User < ApplicationRecord
 
   belongs_to :team
   accepts_nested_attributes_for :team
+
+  def today_post?
+    posts.exists?(created_at: Time.current.all_day)
+  end
 end

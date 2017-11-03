@@ -9,7 +9,8 @@ section
           | Last login:
           = user.last_sign_in_at
         p
-          = user.posts.size
-          | posts
+          = link_to member_posts_path(user) do
+            = user.posts.size
+            | posts
         = link_to member_path(user), class: "secondary-content" do
           i.material-icons info
