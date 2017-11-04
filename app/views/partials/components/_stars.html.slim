@@ -1,0 +1,3 @@
+= link_to 'javascript:void(0)', class: 'right js-star-toggle', data: { id: post.id } do
+  i.small.material-icons.js-star style=('color: #F9A825;')
+    = current_user.starred?(post.id) ? 'star' : 'star_border'

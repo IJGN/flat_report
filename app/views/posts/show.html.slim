@@ -1,7 +1,53 @@
-- @post.attributes.each do |key, val|
-  p
-    strong= "#{key}:"
-    = val
+article
+  .row
+    .col.s12.m12
+      h4
+        = "#{@post.user.username.presence} Post"
+      .card
+        .card-content
+          = render partial: 'partials/components/stars', locals: { post: @post }
+          p
+            = "published at: #{@post.published_at}"
+          p
+            = "updated at: #{@post.updated_at}"
+        .card-tabs
+          ul.tabs.tabs-fixed-width
+            li.tab
+              a.active href="#details"  Details
+            li.tab
+              a href="#contents" Contents
+            li.tab
+              a href="#comments"  Comments
+            li.indicator style=("right: -12px; left: 184px;")
+        .card-content.grey.lighten-4 style=("word-break: break-word;")
+          #details.active style=""
+            - @post.post_details.each do |post_detail|
+              .row
+                .card-panel.hoverable
+                  span.card-title
+                    = post_detail.project.name
+                  span
+                    i.material-icons access_time
+                    = "#{post_detail.spent_time} hours"
+                  p
+                    = post_detail.content
+
+          #contents style=("display: none;")
+            .row
+              .card-panel.hoverable
+                span.card-title
+                  | Unknown content
+                p
+                  = @post.unknown_content
+            .row
+              .card-panel.hoverable
+                span.card-title
+                  | Impression content
+                p
+                  = @post.impression_content
+
+          #comments style=("display: none;")  This is comment.
+
 
 - if current_user.id == @post.user_id
   = link_to 'Edit', edit_me_post_path(@post)

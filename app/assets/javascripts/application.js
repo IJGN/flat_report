@@ -18,3 +18,4 @@
 //= require cocoon
 //= require datatables
 //= require init
+//= require stars

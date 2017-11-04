@@ -22,39 +22,12 @@ section#summary
 section#timeline
   h4 Timeline
   ul.collection
-    li.collection-item.avatar
-      img.circle alt="" src="http://special.froma.com/jkwp/wp-content/uploads/2015/11/81ccfa9a27bb7259ae01fd4de24f0210.jpg" /
-      span.title Title
-      p
-        | First Line
-        br/
-        | Second Line
-      a.secondary-content href="#!"
-        i.material-icons grade
-    li.collection-item.avatar
-      i.material-icons.circle folder
-      span.title Title
-      p
-        | First Line
-        br/
-        | Second Line
-      a.secondary-content href="#!"
-        i.material-icons grade
-    li.collection-item.avatar
-      i.material-icons.circle.green insert_chart
-      span.title Title
-      p
-        | First Line
-        br/
-        | Second Line
-      a.secondary-content href="#!"
-        i.material-icons grade
-    li.collection-item.avatar
-      i.material-icons.circle.red play_arrow
-      span.title Title
-      p
-        | First Line
-        br/
-        | Second Line
-      a.secondary-content href="#!"
-        i.material-icons grade
+    - current_user.team.posts.each do |post|
+      li.collection-item.avatar
+        img.circle alt="" src="http://special.froma.com/jkwp/wp-content/uploads/2015/11/81ccfa9a27bb7259ae01fd4de24f0210.jpg" /
+        = render partial: 'partials/components/stars', locals: { post: post }
+        span.title
+          = post.user.username
+        p
+          = link_to post_path(post) do
+            = post.id

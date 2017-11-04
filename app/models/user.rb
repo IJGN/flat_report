@@ -55,4 +55,8 @@ class User < ApplicationRecord
   def today_post?
     posts.exists?(created_at: Time.current.all_day)
   end
+
+  def starred?(post)
+    stars.exists?(post: post)
+  end
 end

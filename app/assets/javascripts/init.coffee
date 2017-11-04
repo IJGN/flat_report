@@ -30,7 +30,14 @@ $(document).on 'ready turbolinks:load', ->
     close: "閉じる"
     format: 'yyyy-mm-dd'
 
+  # Cocoon nested forms function
   initCocoon()
+  # Starr toggle function
+  $('.js-star-toggle').on 'click', ->
+    postId = $(this).data 'id'
+    $target = $(this).find('.js-star')
+    starToggle postId, $target
+    return
 
   console.log "load init on ready or turbolinks:load"
 
