@@ -24,5 +24,7 @@ module FlatReport
     end
     # Load paths
     config.autoload_paths += %W[#{config.root}/lib]
+    # Assets precompile
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
   end
 end
