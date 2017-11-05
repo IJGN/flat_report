@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20171022225903) do
   end
 
   create_table "projects", force: :cascade do |t|
+    t.bigint "team_id", null: false
     t.string "client_name", null: false
     t.string "project_name", null: false
     t.integer "status", default: 0, null: false
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 20171022225903) do
     t.integer "actual_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_projects_on_team_id"
   end
 
   create_table "stars", force: :cascade do |t|
@@ -101,6 +103,7 @@ ActiveRecord::Schema.define(version: 20171022225903) do
   add_foreign_key "post_details", "posts"
   add_foreign_key "post_details", "projects"
   add_foreign_key "posts", "users"
+  add_foreign_key "projects", "teams"
   add_foreign_key "stars", "posts"
   add_foreign_key "stars", "users"
   add_foreign_key "users", "teams"

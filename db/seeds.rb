@@ -5,9 +5,11 @@ Team.create!(
   access_token: 'fake_access_token'
 )
 
+team = Team.first
+
 # Post
 Project.destroy_all
-Project.create!(
+team.projects.create!(
   client_name: 'fake_client',
   project_name: 'fake_project',
   status: 0,
@@ -18,7 +20,6 @@ Project.create!(
 
 # User
 User.destroy_all
-team = Team.first
 team.users.create!(
   email: 'admin@test.com',
   password: 'password',
