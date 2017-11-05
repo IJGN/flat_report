@@ -1,0 +1,29 @@
+br
+br
+div class="row"
+  div id="admin" class="col s12"
+    div class="card material-table"
+      div class="table-header"
+
+        h5 Posts
+        .actions data-turbolinks="false"
+          a.search-toggle.waves-effect.btn-flat.nopadding href="#"
+            i.material-icons search
+
+      table#dttb.table
+        thead
+          tr
+            th width="30%" Published
+            th width="30%" Status
+            th
+
+        tbody
+          - @posts.each do |post|
+            tr
+              td = post.published_at
+              td = post.status
+              td.right-align
+                = link_to 'Show ', post
+                - if current_user.id == post.user_id
+                  = link_to ' Edit ', edit_me_post_path(post)
+                  = link_to ' Destroy', me_post_path(post), data: {:confirm => 'Are you sure?'}, :method => :delete
