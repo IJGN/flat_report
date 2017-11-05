@@ -1,0 +1,31 @@
+- url = @project.new_record? ? team_projects_path : team_project_path
+= simple_form_for @project, url: url do |f|
+  - if @project.errors.any?
+    #error_explanation
+      pre
+        = "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
+        ul
+          - @project.errors.full_messages.each do |message|
+            li = message
+  .row
+    .col.s12
+      .row
+        .input-field.col.s12.m12
+          = f.input :client_name, class: "materialize-text",label_html: { class: "active" }
+      .row
+        .input-field.col.s12.m12
+          = f.input :project_name, class: "materialize-text",label_html: { class: "active" }
+      .row
+        .input-field.col.s12.m12
+          = f.input :description, class: "materialize-text", label_html: { class: "active" }
+      .row
+        .input-field.col.s6.m6
+          = f.input :scheduled_time, icon: 'access_time'
+        .input-field.col.s6.m6
+          = f.input :actual_time, icon: 'access_time'
+      .row
+        .input-field.col.s6.m3
+          = f.input :status, as: :select, collection: Project.statuses.keys.to_a, include_blank: false, label: false, icon: 'settings'
+      .row
+        .input-field.col.s3
+          = f.button :submit

@@ -1,0 +1,50 @@
+article
+  .row
+    .col.s12.m12
+      h4
+        = @project.name
+      .card
+        .card-content
+          p
+            = "created at: #{@project.created_at}"
+          p
+            = "updated at: #{@project.updated_at}"
+        .card-tabs
+          ul.tabs.tabs-fixed-width
+            li.tab
+              a.active href="#details"  Details
+            li.tab
+              a href="#contents" Contents
+            li.tab
+              a href="#comments"  Comments
+            li.indicator style=("right: -12px; left: 184px;")
+        .card-content.grey.lighten-4 style=("word-break: break-word;")
+          #details.active style=""
+            .row
+              .card-panel.hoverable
+                span.card-title
+                  = @project.project_name
+                  = @project.status
+                p
+                  = "Client: #{@project.client_name}"
+                span
+                  i.material-icons access_time
+                  = "scheduled: #{@project.scheduled_time} hours"
+                span
+                  i.material-icons access_time
+                  = "actual: #{@project.actual_time} hours"
+
+          #contents style=("display: none;")
+            .row
+              .card-panel.hoverable
+                span.card-title
+                  | Description
+                p
+                  = @project.description
+
+          #comments style=("display: none;")  This is comment.
+
+
+= link_to 'Edit', edit_team_project_path(@project)
+'|
+= link_to 'Back', team_projects_path

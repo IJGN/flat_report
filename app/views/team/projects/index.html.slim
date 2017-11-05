@@ -1,0 +1,28 @@
+br
+br
+div class="row"
+  div id="admin" class="col s12"
+    div class="card material-table"
+      div class="table-header"
+
+        h5 Projects
+        .actions data-turbolinks="false"
+          a.search-toggle.waves-effect.btn-flat.nopadding href="#"
+            i.material-icons search
+
+      table#dttb.table
+        thead
+          tr
+            th width="30%" Name
+            th width="30%" Status
+            th
+
+        tbody
+          - @projects.each do |project|
+            tr
+              td = project.project_name
+              td = project.status
+              td.right-align
+                = link_to 'Show ', team_project_path(project)
+                = link_to ' Edit ', edit_team_project_path(project)
+                = link_to ' Destroy', team_project_path(project), data: {:confirm => 'Are you sure?'}, :method => :delete

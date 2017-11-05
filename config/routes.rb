@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   resource :me, only: [:show, :edit, :update]
   resource :team, only: [:show, :edit, :update]
 
+  namespace :team do
+    resources :projects
+  end
+
   resources :members, only: [:index, :show, :new, :create], controller: :users do
     resources :posts, only: :index, module: :users
   end

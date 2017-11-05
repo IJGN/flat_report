@@ -24,7 +24,9 @@
 
 class Project < ApplicationRecord
   belongs_to :team
-  has_many :post_details
+  has_many :post_details, dependent: :destroy
+
+  enum status: { draft: 0, sales: 10, review: 20, dev: 30, ops: 40, maintenance: 50, closed: 999 }
 
   validates :client_name, presence: true
   validates :project_name, presence: true

@@ -37,3 +37,17 @@ section#team
           p Coming soon...
         .card-action
           = link_to "#{@team.users.size} members", members_path
+
+  .row
+    .col.s12.m12
+      .card
+        .card-image
+          = image_tag 'default_project.jpeg'
+          span.card-title Projects
+          = link_to new_team_project_path, class: 'btn-floating halfway-fab waves-effect waves-light red'
+            i.material-icons edit
+        .card-content
+          p This is projects info
+          p Coming soon...
+        .card-action
+          = link_to "#{@team.projects.size} projects", team_projects_path
