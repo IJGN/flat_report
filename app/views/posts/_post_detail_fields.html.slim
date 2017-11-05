@@ -5,7 +5,7 @@
         i.material-icons remove_circle
       .row
         .input-field.col.s12.m12
-          = f.input :project_id, collection: Project.all, label_method: :name, value_method: :id, icon: 'business'
+          = f.input :project_id, collection: current_user.team.projects, label_method: :name, value_method: :id, icon: 'business'
       .row
         .input-field.col.s6.m3
           = f.input :spent_time, collection: 1..24, icon: 'access_time'
