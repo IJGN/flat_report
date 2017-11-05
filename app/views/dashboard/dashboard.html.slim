@@ -1,8 +1,8 @@
 section#summary
   .row
     .col.s12.m6
-      .card.blue
-        .card-content.white-text
+      .card
+        .card-content
           span.card-title Team information
           p
             | I am a very simple card. I am good at containing small bits of information.
@@ -10,8 +10,8 @@ section#summary
         .card-action
           = link_to 'See', team_path
     .col.s12.m6
-      .card.blue
-        .card-content.white-text
+      .card
+        .card-content
           span.card-title Today
           p
             | I am a very simple card. I am good at containing small bits of information.
@@ -22,7 +22,7 @@ section#summary
 section#timeline
   h4 Timeline
   ul.collection
-    - current_user.team.posts.each do |post|
+    - current_user.team.posts.order(updated_at: :desc).each do |post|
       li.collection-item.avatar
         img.circle alt="" src="http://special.froma.com/jkwp/wp-content/uploads/2015/11/81ccfa9a27bb7259ae01fd4de24f0210.jpg" /
         = render partial: 'partials/components/stars', locals: { post: post }

@@ -1,20 +1,39 @@
-- @team.attributes.each do |key, val|
-  p
-    strong= "#{key}:"
-    = val
+section#team
+  .row
+    .col.s12.m12
+      .card
+        .card-image
+          = image_tag 'default_team.jpeg'
+          span.card-title Team
+          = link_to edit_team_path, class: 'btn-floating halfway-fab waves-effect waves-light red'
+            i.material-icons edit
+        .card-content
+          p
+            = "Name: #{@team.name}"
+          p
+            = "Created: #{@team.created_at}"
+          p
+            = "Activities rate: #{@team.post_activities_rate} %"
+          - most_starred_post = @team.most_starred_post
+          - if most_starred_post
+            p
+              = "Most starred post: created by #{most_starred_post.user.username}"
+              br
+              = link_to 'See', post_path(most_starred_post)
+          p Coming soon...
+        .card-action
+          = "#{@team.posts.size} posts"
 
-.divider
-
-p
-  strong Member size:
-  = @team.users.size
-
-= link_to 'Members', members_path
-
-.divider
-
-p
-  strong Post size:
-  = @team.posts.size
-
-= link_to 'Edit', edit_team_path
+  .row
+    .col.s12.m12
+      .card
+        .card-image
+          = image_tag 'default_member.jpeg'
+          span.card-title Members
+          = link_to new_member_path, class: 'btn-floating halfway-fab waves-effect waves-light red'
+            i.material-icons edit
+        .card-content
+          p This is members info
+          p Coming soon...
+        .card-action
+          = link_to "#{@team.users.size} members", members_path

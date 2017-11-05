@@ -20,7 +20,7 @@ div class="row"
         tbody
           - @posts.each do |post|
             tr
-              td = post.published_at
+              td = post.published_at.to_date
               td = post.status
               td.right-align
                 = link_to 'Show ', post
