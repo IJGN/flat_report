@@ -21,6 +21,8 @@ class Team < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :access_token, uniqueness: true
 
+  before_validation :set_access_token
+
   def posts
     Post.includes(:user).where(user_id: users.ids)
   end
@@ -36,6 +38,10 @@ class Team < ApplicationRecord
   end
 
   private
+
+  def set_access_token
+    self.access_token = access_token.presence || SecureRandom.hex
+  end
 
   def number_of_days_created
     (Date.current - created_at.to_date).to_i

@@ -10,6 +10,11 @@
 
 https://sleepy-lake-47288.herokuapp.com/
 
+_テストアカウント_
+
+admin@test.com  
+password
+
 ## Getting Started
 
 サーバサイド、クライアントサイドともにRuby on Railsで実装しています。開発端末はMacを想定しています。DBはpostgreSQLを使用しています。
